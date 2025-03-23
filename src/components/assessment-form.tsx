@@ -42,7 +42,7 @@ export function AssessmentForm() {
     const bmi = data.weight && data.height ? calculateBMI(data.weight, data.height) : 0;
     
     doc.setFontSize(20);
-    doc.text('Diabetes Risk Assessment Report', 20, 20);
+    doc.text('Diabetes Risk Assessment Report <br/> Designed By Samuel', 20, 20);
     
     doc.setFontSize(12);
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, 30);

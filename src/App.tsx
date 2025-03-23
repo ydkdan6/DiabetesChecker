@@ -27,8 +27,7 @@ function App() {
 
         <div className="mt-8 text-center text-sm opacity-70">
           <p>
-            Disclaimer: This tool is for informational purposes only and should not replace professional medical advice.
-            Always consult with a healthcare provider for proper diagnosis and treatment.
+            Disclaimer: Always consult with a healthcare provider for proper diagnosis and treatment.
           </p>
         </div>
       </main>

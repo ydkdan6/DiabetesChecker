@@ -13,20 +13,67 @@ export function RiskAssessment({ riskScore, data }: RiskAssessmentProps) {
   const getRecommendations = () => {
     const recommendations = [];
 
+    if(riskScore >= 10) {
+      recommendations.push('Maintain a healthy weight through balanced diet and regular exercise');
+    }
+    
+    if(riskScore >= 20) {
+      recommendations.push('Reduce consumption of processed foods and added sugars');
+      recommendations.push('Consider keeping a food diary to track eating habits');
+    }
+    
+    if(riskScore >= 30) {
+      recommendations.push('Monitor blood pressure regularly');
+      recommendations.push('Consider consulting with a nutritionist for a personalized meal plan');
+      recommendations.push('Limit alcohol consumption to moderate levels');
+    }
+    
+    if(riskScore >= 50) {
+      recommendations.push('Consider participating in a diabetes prevention program');
+      recommendations.push('Monitor your weight weekly and track changes');
+      recommendations.push('Reduce stress through mindfulness, meditation, or relaxation techniques');
+    }
+    
+    if(riskScore >= 70) {
+      recommendations.push('Check your feet daily for cuts, blisters, or swelling');
+      recommendations.push('Consider home blood glucose monitoring');
+      recommendations.push('Have regular eye examinations');
+    }
+
     if (data.bloodGlucoseFasting && data.bloodGlucoseFasting > 100) {
       recommendations.push('Monitor your fasting blood glucose levels regularly');
     }
-
+    
+    if (data.bloodGlucoseFasting && data.bloodGlucoseFasting > 110) {
+      recommendations.push('Limit carbohydrate intake, especially refined carbs and sugars');
+    }
+    
     if (data.physicalActivityDays && data.physicalActivityDays < 3) {
       recommendations.push('Increase physical activity to at least 150 minutes per week');
+    }
+    
+    if (data.physicalActivityDays && data.physicalActivityDays === 0) {
+      recommendations.push('Start with short daily walks and gradually increase your activity level');
     }
 
     if (data.sleepHours && (data.sleepHours < 6 || data.sleepHours > 9)) {
       recommendations.push('Aim for 7-8 hours of sleep per night');
     }
+    
+    if (data.familyHistory) {
+      recommendations.push('Share your family history of diabetes with your healthcare provider');
+    }
+    
+
+    
+    if (data.stressLevel && data.stressLevel > 7) {
+      recommendations.push('Implement stress reduction techniques like yoga or deep breathing exercises');
+    }
+    
 
     if (riskLevel === 'high' || riskLevel === 'very-high') {
       recommendations.push('Schedule an appointment with your healthcare provider');
+      recommendations.push('Get a comprehensive blood panel including HbA1c test');
     }
 
     return recommendations;
